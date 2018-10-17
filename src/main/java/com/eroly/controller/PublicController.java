@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.eroly.common.GlobalSt;
-import com.eroly.exception.ErolyException;
 import com.eroly.util.OperaServletUtil;
 
 @Controller("PublicController")

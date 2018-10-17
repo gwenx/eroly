@@ -22,7 +22,6 @@ import com.eroly.service.ChapterService;
 import com.eroly.service.CourseService;
 import com.eroly.util.CourseUtil;
 import com.eroly.util.RedisCache;
-import com.eroly.util.StringUtil;
 import com.eroly.util.ValiddateUtil;
 
 @Controller("CourseController")
@@ -39,6 +38,7 @@ public class CourseController {
 	private RedisCache redisCache;
 	@Autowired(required=true)
 	private CourseUtil courseUtil;
+	
 	/**
 	 * 查询所有课程
 	 * @param model

@@ -1,4 +1,5 @@
 package com.eroly.controller;
+
 import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.eroly.exception.ErolyException;
 import com.eroly.service.UserService;
 import com.eroly.util.OperaServletUtil;
 import com.eroly.util.ValiddateUtil;
+
 @Controller("UserController")
 @RequestMapping("/user")
 public class UserController {
