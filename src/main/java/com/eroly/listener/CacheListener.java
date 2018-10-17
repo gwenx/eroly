@@ -17,12 +17,10 @@ import com.eroly.util.SpringTools;
 public class CacheListener implements ServletContextListener {
 	private static Logger logger = Logger.getLogger(CacheListener.class);
 	public static WebApplicationContext springCtx;
-    @Override
-	public void contextDestroyed(ServletContextEvent arg0)  { 
+    public void contextDestroyed(ServletContextEvent arg0)  { 
     }
 
-    @Override
-	public void contextInitialized(ServletContextEvent arg0)  { 
+    public void contextInitialized(ServletContextEvent arg0)  { 
     	logger.info("---CacheListener初始化开始---");
     	init();
     	logger.info("---CacheListener初始化结束---");

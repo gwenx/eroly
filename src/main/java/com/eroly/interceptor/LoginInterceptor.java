@@ -11,7 +11,6 @@ import com.eroly.common.GlobalSt;
 
 public class LoginInterceptor implements HandlerInterceptor{
 
-	@Override
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
 		HttpSession session = arg0.getSession();
 		String user = (String) session.getAttribute(GlobalSt.LOGIN_FLAG);
@@ -22,12 +21,10 @@ public class LoginInterceptor implements HandlerInterceptor{
 			return false;
 		}
 	}
-	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
 		// TODO Auto-generated method stub
 	}
-	@Override
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
 			throws Exception {
 		// TODO Auto-generated method stub

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns="http://java.sun.com/xml/ns/javaee" 
-xmlns:web="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-id="WebApp_ID" metadata-complete="false" version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" metadata-complete="false" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -13,7 +9,6 @@ id="WebApp_ID" metadata-complete="false" version="3.0">
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!-- 自定义监听器，这个监听器是在项目启动时把一些固定的数据加载到redis -->
   <listener>
     <listener-class>com.eroly.listener.CacheListener</listener-class>
   </listener>
@@ -24,21 +19,19 @@ id="WebApp_ID" metadata-complete="false" version="3.0">
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <!-- <async-supported>true</async-supported> -->
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
     </init-param>
-    <init-param>  
-      <param-name>forceEncoding</param-name>  
-      <param-value>true</param-value>  
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
     </init-param>
   </filter>
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <!-- springmvc 核心，是一个请求分发器 -->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -61,7 +54,6 @@ id="WebApp_ID" metadata-complete="false" version="3.0">
     <param-name>spring.liveBeansView.mbeanDomain</param-name>
     <param-value>dev</param-value>
   </context-param>
-  <!-- url-patten写成/，表示所有的访问都要经过springMVC拦截器转发（把jsp放在web-INF里） -->
   <servlet-mapping>
     <servlet-name>SpringMVC</servlet-name>
     <url-pattern>/</url-pattern>

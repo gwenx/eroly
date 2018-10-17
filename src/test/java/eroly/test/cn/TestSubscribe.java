@@ -4,6 +4,7 @@ import com.eroly.util.cacheUpdate.RedisMsgPubSubListener;
 
 import redis.clients.jedis.Jedis;
 
+
 public class TestSubscribe {
 	public static void main(String[] args) {
 		try {
