@@ -1,0 +1,34 @@
+.copyright {
+    background: #fdead1;
+    padding: 48px 0;
+}
+.copyright div {
+    width: 540px;
+    margin: 0 auto;
+}
+.copyright div p {
+    width: 400px;
+    text-align: center;
+    display: block;
+    float: left;
+    color: #794b0d;
+}
+.copyright div span {
+    display: block;
+    float: right;
+    padding-top: 12px;
+}
+.copyright div span img {
+    margin: 0 12px;
+}
+/*clear*/
+.clear01 {
+    clear: both;
+}
+.clearfix01:after {
+    display: block;
+    clear: both;
+    content: ".";
+    visibility: hidden;
+    height: 0;
+}

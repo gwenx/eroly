@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eroly.mapper.ChapterMapper" >
+  <resultMap id="BaseResultMap" type="com.eroly.domain.Chapter" >
+    <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="chapter_course" property="chapterCourse" jdbcType="INTEGER" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
+    <result column="chapter_info" property="chapterInfo" jdbcType="VARCHAR" />
+    <result column="chapter_index" property="chapterIndex" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    chapter_id, chapter_course, chapter_name, chapter_info, chapter_index
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from chapter
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chapter
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eroly.domain.Chapter" >
+    insert into chapter (chapter_id, chapter_course, chapter_name, 
+      chapter_info, chapter_index)
+    values (#{chapterId,jdbcType=INTEGER}, #{chapterCourse,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR}, 
+      #{chapterInfo,jdbcType=VARCHAR}, #{chapterIndex,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eroly.domain.Chapter" >
+    insert into chapter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        chapter_id,
+      </if>
+      <if test="chapterCourse != null" >
+        chapter_course,
+      </if>
+      <if test="chapterName != null" >
+        chapter_name,
+      </if>
+      <if test="chapterInfo != null" >
+        chapter_info,
+      </if>
+      <if test="chapterIndex != null" >
+        chapter_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterCourse != null" >
+        #{chapterCourse,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null" >
+        #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterInfo != null" >
+        #{chapterInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterIndex != null" >
+        #{chapterIndex,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eroly.domain.Chapter" >
+    update chapter
+    <set >
+      <if test="chapterCourse != null" >
+        chapter_course = #{chapterCourse,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null" >
+        chapter_name = #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterInfo != null" >
+        chapter_info = #{chapterInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterIndex != null" >
+        chapter_index = #{chapterIndex,jdbcType=INTEGER},
+      </if>
+    </set>
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eroly.domain.Chapter" >
+    update chapter
+    set chapter_course = #{chapterCourse,jdbcType=INTEGER},
+      chapter_name = #{chapterName,jdbcType=VARCHAR},
+      chapter_info = #{chapterInfo,jdbcType=VARCHAR},
+      chapter_index = #{chapterIndex,jdbcType=INTEGER}
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </update>
+ <select id="findByCourseId" parameterType="string" resultType="map">
+SELECT CHAPTER_ID chapterId,CHAPTER_COURSE chapterCourse,
+CHAPTER_INDEX chapterIndex,CHAPTER_NAME chapterName,
+CHAPTER_INFO chapterInfo,count(*) nodeCount
+FROM CHAPTER JOIN NODE ON NODE_CHAPTER=CHAPTER_ID
+WHERE CHAPTER_COURSE = #{courseId,jdbcType=VARCHAR}
+GROUP BY NODE_CHAPTER
+ORDER BY CHAPTER_INDEX
+</select>
+</mapper>

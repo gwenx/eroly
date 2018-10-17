@@ -1,0 +1,103 @@
+/* 章节div */
+.couese-div {
+	border-radius: 10px;
+	text-align: left;
+	/* border:1px blue solid; */
+	margin: 0 auto 10px auto;
+	padding-left: 20px;
+	height: 50px;
+	line-height: 50px;
+	background: rgba(0, 179, 113, 1);
+	font-size: 16px;
+	color: white;
+}
+/* 章节 第几章 */
+.couese-div span {
+	color: white;
+	font-weight: 600;
+	font-size: 16px;
+	margin-right: 20px;
+}
+/* 小节 第几节 */
+.nodeDiv span {
+	color: white;
+	font-size: 16px;
+	margin-right: 20px;
+}
+/* 小节div */
+.nodeDiv {
+	color: white;
+	width: 95%;
+	margin-left: 3%; 
+	margin-bottom : 10px;
+	border-radius: 10px;
+	text-align: left;
+	/* border:1px blue solid; */
+	padding-left: 20px;
+	height: 50px;
+	line-height: 50px;
+	background: rgba(128, 128, 128, 0.9);
+	font-size: 16px;
+	
+}
+
+.node {
+	display: none;
+}
+/*课程简介内容div*/
+.courseIntroduce {
+	background: rgba(0, 179, 113, 1);
+	color: white;
+	border-radius: 10px; 
+	padding : 20px;
+	padding: 20px;
+	width : 70%;
+	margin: 20px auto;
+	font-size: 16px;
+}
+
+.legendTitle {
+	
+}
+.tableDiv{
+	background: rgba(0, 179, 113, 1);
+	border-radius: 10px; 
+	color:white;
+	/* padding:10px 0; */
+	width: 74%;
+	height:164px;
+	margin:20px auto;
+	padding:10px 0;
+}
+.floatDiv1 div{
+	color:white;
+	font-size: 16px;
+	height:30px;
+	line-height: 30px;
+	margin:5px;
+}
+.floatDiv2 div{
+	color:white;
+	font-size: 16px;
+	height:30px;
+	line-height: 30px;
+	margin:5px;
+}
+.courseDetailDiv{
+	text-align: left;
+	margin-left:20px;
+	margin-top:10px;
+	width:90%;
+}
+.courseTable {
+	margin: 0 auto;
+}
+.floatDiv1{
+	position:absolute;
+	margin-left:80px;
+}
+.floatDiv2{
+	position:relative;
+	float:left;
+	left:70%;
+}

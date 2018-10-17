@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eroly.mapper.CourseMapper" >
+  <resultMap id="BaseResultMap" type="com.eroly.domain.Course" >
+    <id column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="course_info" property="courseInfo" jdbcType="VARCHAR" />
+    <result column="course_price" property="coursePrice" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_id, course_name, course_info, course_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eroly.domain.Course" >
+    insert into course (course_id, course_name, course_info, 
+      course_price)
+    values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseInfo,jdbcType=VARCHAR}, 
+      #{coursePrice,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eroly.domain.Course" >
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="courseInfo != null" >
+        course_info,
+      </if>
+      <if test="coursePrice != null" >
+        course_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseInfo != null" >
+        #{courseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null" >
+        #{coursePrice,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eroly.domain.Course" >
+    update course
+    <set >
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseInfo != null" >
+        course_info = #{courseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null" >
+        course_price = #{coursePrice,jdbcType=INTEGER},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eroly.domain.Course" >
+    update course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      course_info = #{courseInfo,jdbcType=VARCHAR},
+      course_price = #{coursePrice,jdbcType=INTEGER}
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+  <!-- 查询所有课程信息 -->
+  <select id="findCourseInfo" resultType="map">
+  	SELECT COURSE_ID courseId,
+  	COURSE_NAME courseName,
+  	COURSE_INFO courseInfo,
+  	COUNT(COURSE_ID) totalNode,
+  	PRICE_TOTAL totalPrice,
+  	PRICE_DEPOSIT priceDeposit,
+	PRICE_DISCOUNT priceDiscount,
+	DATE_FORMAT(PRICE_DIEDLINE,'%Y-%m-%d') priceDiedline,DATE_FORMAT(teaching_start,'%Y-%m-%d') teachingStart,
+    DATE_FORMAT(teaching_end,'%Y-%m-%d') teachingEnd
+	FROM COURSE JOIN CHAPTER ON COURSE_ID = CHAPTER_COURSE
+	JOIN NODE ON NODE_CHAPTER = CHAPTER_ID 
+	JOIN PRICE ON PRICE_ID = COURSE_PRICE JOIN teaching ON teaching_course=course_id
+	GROUP BY COURSE_ID
+  </select>
+  <!-- 模糊查询课程信息 -->
+  <select id="findCourseIdByKeyWords" resultType="java.lang.String" parameterType="string" >
+    select DISTINCT course_id from course 
+	WHERE course_name LIKE (CONCAT('%',#{0},'%')) OR course_info LIKE (CONCAT('%',#{0},'%'))
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  
+</mapper>

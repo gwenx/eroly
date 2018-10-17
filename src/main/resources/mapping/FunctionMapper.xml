@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eroly.mapper.FunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.eroly.domain.Function" >
+    <id column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="function_name" property="functionName" jdbcType="VARCHAR" />
+    <result column="function_path" property="functionPath" jdbcType="VARCHAR" />
+    <result column="function_info" property="functionInfo" jdbcType="VARCHAR" />
+    <result column="function_lv" property="functionLv" jdbcType="INTEGER" />
+    <result column="function_target" property="functionTarget" jdbcType="VARCHAR" />
+    <result column="fun_pid" property="funPid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    function_id, function_name, function_path, function_info, function_lv, function_target, 
+    fun_pid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from function
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from function
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eroly.domain.Function" >
+    insert into function (function_id, function_name, function_path, 
+      function_info, function_lv, function_target, 
+      fun_pid)
+    values (#{functionId,jdbcType=INTEGER}, #{functionName,jdbcType=VARCHAR}, #{functionPath,jdbcType=VARCHAR}, 
+      #{functionInfo,jdbcType=VARCHAR}, #{functionLv,jdbcType=INTEGER}, #{functionTarget,jdbcType=VARCHAR}, 
+      #{funPid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eroly.domain.Function" >
+    insert into function
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="functionId != null" >
+        function_id,
+      </if>
+      <if test="functionName != null" >
+        function_name,
+      </if>
+      <if test="functionPath != null" >
+        function_path,
+      </if>
+      <if test="functionInfo != null" >
+        function_info,
+      </if>
+      <if test="functionLv != null" >
+        function_lv,
+      </if>
+      <if test="functionTarget != null" >
+        function_target,
+      </if>
+      <if test="funPid != null" >
+        fun_pid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="functionId != null" >
+        #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="functionName != null" >
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionPath != null" >
+        #{functionPath,jdbcType=VARCHAR},
+      </if>
+      <if test="functionInfo != null" >
+        #{functionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="functionLv != null" >
+        #{functionLv,jdbcType=INTEGER},
+      </if>
+      <if test="functionTarget != null" >
+        #{functionTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="funPid != null" >
+        #{funPid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eroly.domain.Function" >
+    update function
+    <set >
+      <if test="functionName != null" >
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionPath != null" >
+        function_path = #{functionPath,jdbcType=VARCHAR},
+      </if>
+      <if test="functionInfo != null" >
+        function_info = #{functionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="functionLv != null" >
+        function_lv = #{functionLv,jdbcType=INTEGER},
+      </if>
+      <if test="functionTarget != null" >
+        function_target = #{functionTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="funPid != null" >
+        fun_pid = #{funPid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eroly.domain.Function" >
+    update function
+    set function_name = #{functionName,jdbcType=VARCHAR},
+      function_path = #{functionPath,jdbcType=VARCHAR},
+      function_info = #{functionInfo,jdbcType=VARCHAR},
+      function_lv = #{functionLv,jdbcType=INTEGER},
+      function_target = #{functionTarget,jdbcType=VARCHAR},
+      fun_pid = #{funPid,jdbcType=INTEGER}
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </update>
+</mapper>

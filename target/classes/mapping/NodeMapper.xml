@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eroly.mapper.NodeMapper" >
+  <resultMap id="BaseResultMap" type="com.eroly.domain.Node" >
+    <id column="node_id" property="nodeId" jdbcType="INTEGER" />
+    <result column="node_chapter" property="nodeChapter" jdbcType="INTEGER" />
+    <result column="node_name" property="nodeName" jdbcType="VARCHAR" />
+    <result column="node_info" property="nodeInfo" jdbcType="VARCHAR" />
+    <result column="node_index" property="nodeIndex" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    node_id, node_chapter, node_name, node_info, node_index
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from node
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from node
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eroly.domain.Node" >
+    insert into node (node_id, node_chapter, node_name, 
+      node_info, node_index)
+    values (#{nodeId,jdbcType=INTEGER}, #{nodeChapter,jdbcType=INTEGER}, #{nodeName,jdbcType=VARCHAR}, 
+      #{nodeInfo,jdbcType=VARCHAR}, #{nodeIndex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eroly.domain.Node" >
+    insert into node
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nodeId != null" >
+        node_id,
+      </if>
+      <if test="nodeChapter != null" >
+        node_chapter,
+      </if>
+      <if test="nodeName != null" >
+        node_name,
+      </if>
+      <if test="nodeInfo != null" >
+        node_info,
+      </if>
+      <if test="nodeIndex != null" >
+        node_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="nodeChapter != null" >
+        #{nodeChapter,jdbcType=INTEGER},
+      </if>
+      <if test="nodeName != null" >
+        #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeInfo != null" >
+        #{nodeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeIndex != null" >
+        #{nodeIndex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eroly.domain.Node" >
+    update node
+    <set >
+      <if test="nodeChapter != null" >
+        node_chapter = #{nodeChapter,jdbcType=INTEGER},
+      </if>
+      <if test="nodeName != null" >
+        node_name = #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeInfo != null" >
+        node_info = #{nodeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeIndex != null" >
+        node_index = #{nodeIndex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eroly.domain.Node" >
+    update node
+    set node_chapter = #{nodeChapter,jdbcType=INTEGER},
+      node_name = #{nodeName,jdbcType=VARCHAR},
+      node_info = #{nodeInfo,jdbcType=VARCHAR},
+      node_index = #{nodeIndex,jdbcType=VARCHAR}
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </update>
+  <select id="findNodeByChapter" resultType="map" parameterType="string">
+  	SELECT NODE_ID nodeId,NODE_NAME nodeName,NODE_INFO nodeInfo,NODE_INDEX nodeIndex,NODE_CHAPTER nodeChapter
+  	FROM NODE WHERE NODE_CHAPTER=#{chapterId,jdbcType=VARCHAR}
+  </select>
+  
+  
+</mapper>

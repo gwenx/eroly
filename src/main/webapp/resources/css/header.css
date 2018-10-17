@@ -1,0 +1,213 @@
+@charset "gb2312";
+/* CSS Document */
+body {
+	color: #333;
+	background: #fff;
+}
+
+a {
+	outline: none; /* for Forefox */
+}
+
+a {
+	star: expression(this.onFocus = this.blur ()); /* for Ie*/
+}
+
+a:link, a:visited {
+	color: #333;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+a:hover {
+	color: #de3237;
+	text-decoration: none
+}
+
+.wrap {
+	width: 1004px;
+	margin: 0 auto;
+}
+/**top**/
+.top {
+	width: 100%;
+	background: #f7f7f7;
+	border-bottom: 1px solid #dad9d7;
+	height: 28px;
+	line-height: 28px;
+}
+/**header**/
+.header {
+	width: 100%;
+	padding: 10px 0;
+}
+
+.search_box {
+	padding-top: 18px;
+}
+
+.search {
+	width: 520px;
+	height: 46px;
+	float: right;
+}
+
+#lenu1 li {
+	float: left;
+	display: block;
+	cursor: pointer;
+	width: 58px;
+	text-align: center;
+	line-height: 29px;
+	height: 29px;
+}
+
+#lenu1 li span {
+	float: right;
+	color: #c0c0c0;
+	font-weight: normal
+}
+
+#lenu1 li.hover {
+	color: #de3237;
+	font-weight: bold;
+}
+
+.lain1_box {
+	clear: both;
+	background: #df3237;
+	width: 514px;
+	padding: 3px;
+	line-height: 30px;
+}
+
+/*放搜索框的lable*/
+.serachLab{
+	height: 30px;
+    background-color: white;
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-top: 8px;
+    outline: 0;
+    border-radius: 20px;
+    vertical-align: baseline;
+}
+/*搜索放大镜*/
+.icon18{
+	display: inline-block;
+    width: 30px;
+    vertical-align: middle;
+    background: url(../img/icon.png) no-repeat;
+	background-position: 0 0;
+}
+.sertxt {
+    border-radius: 20px;
+	width: 160px;
+    height: 30px;
+    outline: none;
+    border: none;
+    padding-left: 8px;
+    margin-left: 5px;
+    transition: .3s;
+    -webkit-transition: .3s;
+}
+.sertxt:focus {
+    border: none;
+	outline:none;
+	width: 190px;
+}
+.sertxt:blur+after{
+    border: none;
+	outline:none;
+	border: 1px solid #000000;
+}
+.serbtn {
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+}
+.serbtn:focus{
+	outline:none;
+}
+/* .serbtn:hover{
+	background: #ba0100;
+} */
+#lain1 ul {
+	display: none;
+	text-align: left;
+}
+
+#lain1 ul.block {
+	display: block;
+}
+
+.nav {
+	width: 100%;
+	border: 1px solid #D32A2F;
+	border-left: 0;
+	border-right: 0;
+	height: 46px;
+	line-height: 46px;
+	background: #de3237;
+	margin:0 auto;
+}
+
+.nav_left {
+	float: left;
+}
+
+.nav_left li {
+	float: left;
+	margin-right: 10px;
+}
+
+.nav_left li a:link, .nav_left li a:visited {
+	color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 20px;
+    line-height: 46px;
+    text-decoration: none;
+    display: block;
+}
+
+.nav_left li a:hover {
+	background: #ba0100
+}
+
+.nav_right {
+	float: right;
+	line-height: 0;
+}
+
+.nav_right li {
+	float: left;
+	padding-left: 10px;
+}
+
+.nav_right li a:link, .nav_right li a:visited {
+	padding-right: 10px;
+	color: #F6E5B7;
+	text-decoration: none
+}
+
+.nav_right li a:hover {
+	color: #fff;
+	text-decoration: none
+}
+
+.nav_right li span {
+	float: right;
+	color: #ff6666;
+}
+.headWraper{
+	background-color: #FFFFFF
+}
+
+

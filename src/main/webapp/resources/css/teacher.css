@@ -1,0 +1,339 @@
+@charset "UTF-8";
+
+@
+-webkit-keyframes fadeInUp { 0% {
+	opacity: 0;
+	-webkit-transform: translateY(20px);
+	transform: translateY(20px);
+}
+
+100%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+translateY
+(0);
+
+    
+transform
+:
+ 
+translateY
+(0);
+
+  
+}
+}
+@
+keyframes fadeInUp { 0% {
+	opacity: 0;
+	-webkit-transform: translateY(20px);
+	-ms-transform: translateY(20px);
+	transform: translateY(20px);
+}
+
+100%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+translateY
+(0);
+
+    
+-ms-transform
+:
+ 
+translateY
+(0);
+
+    
+transform
+:
+ 
+translateY
+(0);
+
+  
+}
+}
+.fadeInUp {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+}
+
+@
+-webkit-keyframes fadeInUpBig { 0% {
+	opacity: 0;
+	-webkit-transform: translateY(2000px);
+	transform: translateY(2000px);
+}
+
+100%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+translateY
+(0);
+
+    
+transform
+:
+ 
+translateY
+(0);
+
+  
+}
+}
+@
+keyframes fadeInUpBig { 0% {
+	opacity: 0;
+	-webkit-transform: translateY(2000px);
+	-ms-transform: translateY(2000px);
+	transform: translateY(2000px);
+}
+
+100%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+translateY
+(0);
+
+    
+-ms-transform
+:
+ 
+translateY
+(0);
+
+    
+transform
+:
+ 
+translateY
+(0);
+
+  
+}
+}
+body, div, dl, dd, dt, p, a, form, select, input, span, ul, ol, li {
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0;
+	font-weight: normal;
+	font-size: 14px;
+	font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+	color: #363636;
+}
+
+ul, ol {
+	list-style: none;
+	text-indent: 0;
+	list-style-position: outside;
+}
+
+img {
+	border: 0px;
+}
+
+.clear {
+	width: 0px;
+	height: 0px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+	clear: both
+}
+
+b {
+	font-weight: normal;
+}
+
+.fl {
+	float: left;
+	display: inline;
+}
+
+.fr {
+	float: right;
+	display: inline;
+}
+
+.fadeInUpBig {
+	-webkit-animation-name: fadeInUpBig;
+	animation-name: fadeInUpBig;
+}
+
+/* .about05-bg{background:url(../img/bg-loop1.jpg);} */
+.about05-ul01 {
+	width: 1000px;
+}
+
+.about05-ul01 li {
+	float: left;
+	height: 43px;
+	line-height: 43px;
+	padding: 0 13px;
+	background: #1d1d29;
+	font-size: 14px;
+	border-bottom: 1px solid #ec1c32;
+	border-right: 1px dashed #4b4b4b;
+	color: #ffffff;
+	text-align: center;
+	position: relative;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.about05-ul01 li img {
+	opacity: 0;
+	transition: 0.5s;
+	display: none \9;
+	position: absolute;
+	top: 44px;
+}
+
+.about05-tab-box {
+	width: 1002px;
+	margin: 27px 0 0 0;
+}
+
+.about05-tab-box .about05-tab-box-div {
+	
+}
+
+.about05-tab-box ul.about05-ul-tab-box {
+	float: left;
+	width: 165px;
+	margin-right: 2px;
+	cursor: pointer;
+}
+
+.about05-tab-box ul.about05-ul-tab-box:hover .li02 {
+	background: #000;
+	transition: 0.5s;
+}
+
+.about05-tab-box ul.about05-ul-tab-box img {
+	float: left;
+	width: 165px;
+	height: 265px;
+}
+
+.about05-tab-box ul.about05-ul-tab-box .jt02 {
+	width: 11px;
+	height: 6px;
+}
+
+.about05-tab-box ul.about05-ul-tab-box .li01 {
+	float: left;
+	width: 154px;
+	height: 46px;
+	background: #353647;
+	color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 6px 0 0 11px;
+}
+
+.about05-tab-box ul.about05-ul-tab-box .li02 {
+	float: left;
+	width: 165px;
+	height: 101px;
+	background: #1d1d29;
+}
+
+.about05-tab-box ul.about05-ul-tab-box .li02 .p01 {
+	float: left;
+	width: 165px;
+}
+
+.about05-tab-box ul.about05-ul-tab-box .li02 .p01 img {
+	float: left;
+	margin-left: 12px;
+}
+
+.about05-tab-box ul.about05-ul-tab-box .li02 .p02 {
+	float: left;
+	width: 150px;
+	line-height: 20px;
+	color: #c7c7c7;
+	font-size: 12px;
+	margin: 3px 0 0 8px;
+	text-align: justify;
+}
+
+.main {
+	margin: 0 auto;
+	width: 1000px;
+	position: relative;
+}
+
+.fixbox-main {
+	width: 1000px;
+	margin-left: 4%;
+}
+
+.fixbox-main p {
+	margin-right: 24px;
+	float: left;
+	font-size: 16px;
+	color: #ffffff;
+}
+
+.fixbox-main input {
+	float: left;
+}
+
+.fixbox-main input.text {
+	margin-right: 10px;
+	margin-top: 20px;
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 15px;
+	background: #ffffff;
+	border: none;
+}
+
+.fixbox-main input.submit {
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	background: url("../img/submit.jpg") no-repeat center top;
+	border: none;
+}
+
+/*clear*/
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}

@@ -1,0 +1,52 @@
+body, div, dl, dd, dt, p, a, form, select, input, span, ul, ol, li {
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0;
+	font-weight: normal;
+	font-size: 14px;
+	font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+	color: #363636;
+}
+
+.reg:hover {
+	color: red;
+	text-decoration: underline;
+}
+.reg {
+	color: red!important;
+	font-size:17px!important;
+}
+
+#tsyzm {
+	color: blue;
+	font-size: 16px;
+	font-style: italic;
+	padding-top: 4px;
+	padding-left: 10px;
+	width: 60px;
+	background-color: #E8E8E8;
+    padding-right: 10px;
+}
+
+#ss {
+	width: 100px;
+	padding-top: 8px;
+	color: red;
+	font-size: 14px;
+}
+
+.conect_center {
+	width: 24%;
+}
+
+.errorTip {
+	color: red;
+}
+
+.okTip {
+	color: green;
+}
+td>input{
+	height:30px;;
+	width:100%;
+}

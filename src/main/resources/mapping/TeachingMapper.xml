@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eroly.mapper.TeachingMapper" >
+  <resultMap id="BaseResultMap" type="com.eroly.domain.Teaching" >
+    <id column="teaching_id" property="teachingId" jdbcType="INTEGER" />
+    <result column="teaching_teacher" property="teachingTeacher" jdbcType="INTEGER" />
+    <result column="teaching_course" property="teachingCourse" jdbcType="INTEGER" />
+    <result column="teaching_start" property="teachingStart" jdbcType="TIMESTAMP" />
+    <result column="teaching_end" property="teachingEnd" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    teaching_id, teaching_teacher, teaching_course, teaching_start, teaching_end
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teaching
+    where teaching_id = #{teachingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teaching
+    where teaching_id = #{teachingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eroly.domain.Teaching" >
+    insert into teaching (teaching_id, teaching_teacher, teaching_course, 
+      teaching_start, teaching_end)
+    values (#{teachingId,jdbcType=INTEGER}, #{teachingTeacher,jdbcType=INTEGER}, #{teachingCourse,jdbcType=INTEGER}, 
+      #{teachingStart,jdbcType=TIMESTAMP}, #{teachingEnd,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eroly.domain.Teaching" >
+    insert into teaching
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teachingId != null" >
+        teaching_id,
+      </if>
+      <if test="teachingTeacher != null" >
+        teaching_teacher,
+      </if>
+      <if test="teachingCourse != null" >
+        teaching_course,
+      </if>
+      <if test="teachingStart != null" >
+        teaching_start,
+      </if>
+      <if test="teachingEnd != null" >
+        teaching_end,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teachingId != null" >
+        #{teachingId,jdbcType=INTEGER},
+      </if>
+      <if test="teachingTeacher != null" >
+        #{teachingTeacher,jdbcType=INTEGER},
+      </if>
+      <if test="teachingCourse != null" >
+        #{teachingCourse,jdbcType=INTEGER},
+      </if>
+      <if test="teachingStart != null" >
+        #{teachingStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teachingEnd != null" >
+        #{teachingEnd,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eroly.domain.Teaching" >
+    update teaching
+    <set >
+      <if test="teachingTeacher != null" >
+        teaching_teacher = #{teachingTeacher,jdbcType=INTEGER},
+      </if>
+      <if test="teachingCourse != null" >
+        teaching_course = #{teachingCourse,jdbcType=INTEGER},
+      </if>
+      <if test="teachingStart != null" >
+        teaching_start = #{teachingStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teachingEnd != null" >
+        teaching_end = #{teachingEnd,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where teaching_id = #{teachingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eroly.domain.Teaching" >
+    update teaching
+    set teaching_teacher = #{teachingTeacher,jdbcType=INTEGER},
+      teaching_course = #{teachingCourse,jdbcType=INTEGER},
+      teaching_start = #{teachingStart,jdbcType=TIMESTAMP},
+      teaching_end = #{teachingEnd,jdbcType=TIMESTAMP}
+    where teaching_id = #{teachingId,jdbcType=INTEGER}
+  </update>
+</mapper>
