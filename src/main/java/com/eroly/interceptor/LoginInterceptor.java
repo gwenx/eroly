@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.eroly.common.GlobalSt;
 
 public class LoginInterceptor implements HandlerInterceptor{
-
+//	@Override
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
 		HttpSession session = arg0.getSession();
 		String user = (String) session.getAttribute(GlobalSt.LOGIN_FLAG);

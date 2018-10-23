@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringTools implements ApplicationContextAware{
 	private static ApplicationContext applicationContext;
+//	@Override
 	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
 		SpringTools.applicationContext = arg0;
 	}

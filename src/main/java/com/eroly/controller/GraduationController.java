@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ import com.github.pagehelper.PageInfo;
 @Controller("GraduationController")
 @RequestMapping("/graduation")
 public class GraduationController {
-	private static Logger logger = Logger.getLogger(GraduationController.class);
+	private static Logger logger = LoggerFactory.getLogger(GraduationController.class);
 	@Autowired
 	@Qualifier("GraduationService")
 	private GraduationService graduationService;
@@ -91,7 +92,7 @@ public class GraduationController {
 			int prePage = pageInfo.getPrePage();//上页页码
 			long total = pageInfo.getTotal();//总记录数
 			long firstPage = pageInfo.getFirstPage();//第一页
-			logger.info(pageInfo);
+			logger.info(""+pageInfo);
 			result.put(GlobalSt.SYSTEM_STATUS, GlobalSt.SYSTEM_STATU_ONE);
 			result.put("list", list2);
 			result.put("pages", pages);

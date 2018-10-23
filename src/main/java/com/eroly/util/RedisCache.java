@@ -7,7 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
@@ -17,9 +18,9 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-@Repository("RedisCache")
+@Repository("redisCache")
 public class RedisCache implements Cache {
-	private static Logger logger = Logger.getLogger(RedisCache.class);
+	private static Logger logger = LoggerFactory.getLogger(RedisCache.class);
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;
 	private String name;
@@ -38,7 +39,7 @@ public class RedisCache implements Cache {
 	}
 	public ValueWrapper get(Object key) {
 		logger.info("--------RedisCache.get start----");
-		logger.info("--------Redis key:{}----"+key);
+		logger.info("--------Redis key:{}----",key);
 		final String keyf = key.toString();
 		Object object = null;
 		object = redisTemplate.execute(new RedisCallback<Object>() {
@@ -69,7 +70,7 @@ public class RedisCache implements Cache {
 	 */
 	public void put(Object key, Object value) {
 		logger.info("--------RedisCache.put start----");
-		logger.info("--------Redis key:{}----"+key);
+		logger.info("--------Redis key:{}----",key);
 		final String keyf = key.toString();
 		final Object valuef = value;
 		final long liveTime = 86400;

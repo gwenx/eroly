@@ -8,7 +8,8 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,8 @@ import com.eroly.util.ValiddateUtil;
 @Controller("CourseController")
 @RequestMapping("/course")
 public class CourseController {
-	private static Logger logger = Logger.getLogger(CourseController.class);
+	
+	private static Logger logger = LoggerFactory.getLogger(CourseController.class);
 	@Autowired
 	@Qualifier("CourseService")
 	private CourseService courseService;
@@ -59,7 +61,7 @@ public class CourseController {
 				logger.error("------未查询到课程信息----");
 				throw new ErolyException("系统异常，请稍后再试");
 			}
-			logger.info("-----------------findCourseInfo----"+courseList);
+			logger.info("---findCourseInfo:{}----",courseList);
 		} catch (ErolyException e) {
 			logger.error(e.getMessage(),e);
 			model.addAttribute(GlobalSt.SYSTEM_STATUS, GlobalSt.SYSTEM_STATU_ZERO);

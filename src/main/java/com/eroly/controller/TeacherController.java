@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import com.eroly.util.RedisCache;
 @Controller("TeacherController")
 @RequestMapping("/teacher")
 public class TeacherController {
-	private static Logger logger = Logger.getLogger(TeacherController.class);
+	private static Logger logger = LoggerFactory.getLogger(TeacherController.class);
 	@Autowired
 	@Qualifier("TeacherService")
 	private TeacherService teacherService;

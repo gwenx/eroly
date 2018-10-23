@@ -3,7 +3,8 @@ package com.eroly.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import com.github.pagehelper.PageHelper;
 
 @Service("GraduationService")
 public class GraduationService {
-	private static Logger logger = Logger.getLogger(GraduationService.class);
+	private static Logger logger = LoggerFactory.getLogger(GraduationService.class);
 	@Autowired(required=true)
 	@Qualifier("GraduationMapper")
 	private GraduationMapper graduationMapper;

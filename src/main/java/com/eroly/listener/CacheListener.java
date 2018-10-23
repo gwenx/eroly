@@ -3,7 +3,8 @@ package com.eroly.listener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.eroly.common.GlobalSt;
@@ -15,11 +16,12 @@ import com.eroly.util.RedisCache;
 import com.eroly.util.SpringTools;
 
 public class CacheListener implements ServletContextListener {
-	private static Logger logger = Logger.getLogger(CacheListener.class);
+	private static Logger logger = LoggerFactory.getLogger(CacheListener.class);
 	public static WebApplicationContext springCtx;
-    public void contextDestroyed(ServletContextEvent arg0)  { 
+//	@Override
+	public void contextDestroyed(ServletContextEvent arg0)  { 
     }
-
+//    @Override
     public void contextInitialized(ServletContextEvent arg0)  { 
     	logger.info("---CacheListener初始化开始---");
     	init();

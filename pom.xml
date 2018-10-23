@@ -8,12 +8,7 @@
 	<name>eroly Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
-		<!-- <dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20160810</version>
-		</dependency> -->
+
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
 		<dependency>
@@ -29,9 +24,9 @@
 		</dependency>
 		<!-- 对应junit整合spring -->
 		<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
-		<version>4.2.5.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.2.5.RELEASE</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-core</artifactId>
@@ -87,11 +82,8 @@
 			</exclusions>
 		</dependency>
 		<!-- springmvc依赖json解析jar包 -->
-		<!-- <dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.11</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-asl</artifactId> 
+			<version>1.9.11</version> </dependency> -->
 		<!-- json处理 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -102,6 +94,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.8.11</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jackson-core</artifactId>
+					<groupId>com.fasterxml.jackson.core</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -126,8 +124,7 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>javax.servlet-api</artifactId> 
-			<version>4.0.0</version> <scope>provided</scope> </dependency> -->
+
 		<!-- mybatis操作数据库jar -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -183,6 +180,66 @@
 			<version>2.6</version>
 		</dependency>
 		<!-- 打印日志jar包 -->
+		<!-- 这就是我们要用的slf4j的日志接口，其实和commons-logging一样都是接口，不是具体实现 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.22</version>
+		</dependency>
+		<!-- 这个是桥接包，将已经使用commons-logging记录日志又没法改变(spring默认使用的就是commons-logging)
+		的jar包的日志桥接到slf4 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.22</version>
+		</dependency>
+		<!-- logback -->
+		<!--不加下面那这两个会报错java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/spi/JoranException-->
+		<!--<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.1.11</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-access</artifactId>
+			<version>1.1.11</version>
+		</dependency>-->
+		<!-- 具体的日志实现，真正记录日志的jar -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.11</version>
+		</dependency>
+
+		<!-- 为了将logback和spring集成而使用的包，如果不用这个包也可以记录日志，但会有个问题 -->
+		<dependency>
+			<groupId>org.logback-extensions</groupId>
+			<artifactId>logback-ext-spring</artifactId>
+			<version>0.1.3</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>logback-classic</artifactId>
+					<groupId>ch.qos.logback</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.2</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -234,6 +291,10 @@
 				<exclusion>
 					<artifactId>spring-context</artifactId>
 					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>

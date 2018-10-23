@@ -3,7 +3,8 @@ package com.eroly.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import com.eroly.util.ValiddateUtil;
 @Controller("SMSController")
 @RequestMapping("/messsage")
 public class SMSController {
-	private static Logger logger = Logger.getLogger(SMSController.class);
+	private static Logger logger = LoggerFactory.getLogger(SMSController.class);
 	@Autowired
 	OperaServletUtil OperaServlet;
 	/**

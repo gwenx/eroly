@@ -2,7 +2,8 @@ package com.eroly.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import com.eroly.service.ChapterService;
 @Controller("ChapterController")
 @RequestMapping("/chapter")
 public class ChapterController {
-	private static Logger logger = Logger.getLogger(ChapterController.class);
+	private static Logger logger = LoggerFactory.getLogger(ChapterController.class);
 	@Autowired
 	@Qualifier("ChapterService")
 	private ChapterService chapterService;

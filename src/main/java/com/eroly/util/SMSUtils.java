@@ -1,5 +1,6 @@
 package com.eroly.util;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.taobao.api.ApiException;
 import com.taobao.api.DefaultTaobaoClient;
@@ -12,7 +13,7 @@ import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
  * @version 2018-02-09
  */
 public class SMSUtils {
-	private static Logger logger = Logger.getLogger(SMSUtils.class);
+	private static Logger logger = LoggerFactory.getLogger(SMSUtils.class);
 	public static final String appKey="24799573";//阿里提供的appkey,eroly
 	public static final String appSecret="a3675d0508f1d9335557b2e02e8ac58d";//eroly密钥
 	public static final String url="http://gw.api.taobao.com/router/rest";//短信发送的地址，阿里提供的

@@ -2,7 +2,8 @@ package com.eroly.controller;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import com.eroly.util.OperaServletUtil;
 @Controller("PublicController")
 @RequestMapping("/public")
 public class PublicController {
-	private static Logger logger = Logger.getLogger(PublicController.class);
+	private static Logger logger = LoggerFactory.getLogger(PublicController.class);
 	
 	@Autowired
 	OperaServletUtil OperaServlet;

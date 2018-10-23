@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import com.eroly.util.cache.CacheBase;
 
 @Service("CourseService")
 public class CourseService extends CacheBase<String, Object>{
-	private static Logger logger = Logger.getLogger(CourseService.class);
+	private static Logger logger = LoggerFactory.getLogger(CourseService.class);
 	
 	@Autowired(required=true)
 	@Qualifier("CourseMapper")

@@ -1,7 +1,8 @@
 package com.eroly.controller;
 
 import java.util.Map;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import com.eroly.util.ValiddateUtil;
 @Controller("UserController")
 @RequestMapping("/user")
 public class UserController {
-	private static Logger logger = Logger.getLogger(UserController.class);
+	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired@Qualifier("UserService")
 	private UserService userService;
 	@Autowired
