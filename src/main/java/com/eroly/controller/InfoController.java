@@ -23,7 +23,7 @@ import com.eroly.util.StringUtil;
 @RequestMapping("/info")
 public class InfoController {
 	private static Logger logger = LoggerFactory.getLogger(InfoController.class);
-	@Autowired(required=true)@Qualifier("InfoService")
+	@Autowired(required=true)
 	private InfoService infoService;
 	@Autowired(required=true)
 	private RedisCache redisCache;
@@ -41,22 +41,21 @@ public class InfoController {
 			if(StringUtil.isEmpty(infoType)) {
 				throw new ErolyException("infoType不能为空");
 			}
-			Map<String, Object> infoMap = null;
-			Object obj = redisCache.getRedisValue(GlobalSt.PUBLIC_INFO_ALL);
+			List<Map<String, Object>> infoList = null;
+			Object obj = redisCache.getRedisValue(GlobalSt.PUBLIC_INFO_ALL+infoType);
 			if(null != obj) {
-				infoMap = (Map<String, Object>) obj;
+				infoList = (List<Map<String, Object>>) obj;
 			}
 			//缓存中不存在时，去查库，查完放缓存里
-			if(null == infoMap) {
-				infoMap = infoService.selectAllInfo();
-				redisCache.putObject(GlobalSt.PUBLIC_INFO_ALL, infoMap);
+			if(null == infoList || (null!=infoList&&infoList.size()==0)) {
+				infoService.update();
+				Object obj2 = redisCache.getRedisValue(GlobalSt.PUBLIC_INFO_ALL+infoType);
+				if(null != obj2) {
+					infoList = (List<Map<String, Object>>) obj2;
+				}
 			}
-			logger.info("------呵呵哈哈哈------"+infoMap);
-			Object object = infoMap.get(infoType);
-			List<Map<String,Object>> infoList = new ArrayList<Map<String, Object>>();
-			if(object!=null) {
-				infoList=(List<Map<String, Object>>) object;
-			}
+			logger.info("------广告类型：{}，infoList：{}------",infoType,infoList);
+
 			resultMap.put("infoList", infoList);
 			resultMap.put(GlobalSt.SYSTEM_STATUS, GlobalSt.SYSTEM_STATU_ONE);
 			resultMap.put(GlobalSt.SYSTEM_MSG, "查询成功");

@@ -4,12 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.eroly.util.StringUtil;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.JedisPubSub;
 
-public class RedisMsgPubSubListener extends JedisPubSub {
+/**
+ * Redis发布订阅的扩展类
+ * 作用：1、统一管理ICacheUpdate，把所有实现ICacheUpdate接口的类添加到updates容器
+ * 2、重写onMessage方法，订阅到消息后进行刷新缓存的操作
+ */
+public class RedisMsgPubSub extends JedisPubSub {
+    private static Logger logger = LoggerFactory.getLogger(RedisMsgPubSub.class);
+
 	private Map<String , ICacheUpdate> updates = new HashMap<String , ICacheUpdate>();
-	public boolean addUpdater(String key , ICacheUpdate update) {
+	//由updates统一管理ICacheUpdate
+	public boolean addListener(String key , ICacheUpdate update) {
 		if(update == null) {
 			return false;
 		}
@@ -20,27 +29,29 @@ public class RedisMsgPubSubListener extends JedisPubSub {
      * 订阅频道收到的消息
      */
     @Override  
-    public void onMessage(String channel, String message) {  
-        System.out.println("收到的消息----channel:" + channel + "收到的消息是 :" + message);
+    public void onMessage(String channel, String message) {
+        logger.info("RedisMsgPubSub onMessage channel:{},message :{}" ,channel, message);
         ICacheUpdate updater = null;
         if(StringUtil.isNotEmpty(message)) {
         	updater = updates.get(message);
         }
-        updater.update();
-    }  
+        if(updater!=null){
+            updater.update();
+        }
+    }
     /**
      * 取消订阅频道
      */
     @Override  
     public void onUnsubscribe(String channel, int subscribedChannels) {  
-    	System.out.println("取消订阅频道:" + channel + "被订阅的数量:" + subscribedChannels);  
+        logger.info("RedisMsgPubSub onMessage channel:{},当前订阅数量 :{}" ,channel, subscribedChannels);
     }  
     /**
      * 订阅频道
      */
     @Override  
     public void onSubscribe(String channel, int subscribedChannels) {  
-    	System.out.println("订阅频道:" + channel + "被订阅的数量:" + subscribedChannels);  
+        logger.info("RedisMsgPubSub onMessage channel:{},当前订阅数量 :{}" ,channel, subscribedChannels);
     }  
 	@Override  
     public void unsubscribe() {  

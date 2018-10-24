@@ -14,7 +14,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>com.eroly.listener.CacheListener</listener-class>
+		<listener-class>com.eroly.listener.CacheInitListener</listener-class>
 	</listener>
 	<!-- log4j配置文件位置 -->
 	<!-- <context-param> 

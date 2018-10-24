@@ -31,7 +31,6 @@ public class CourseController {
 	
 	private static Logger logger = LoggerFactory.getLogger(CourseController.class);
 	@Autowired
-	@Qualifier("CourseService")
 	private CourseService courseService;
 	@Autowired
 	@Qualifier("ChapterService")

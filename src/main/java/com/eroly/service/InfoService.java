@@ -3,7 +3,11 @@ package com.eroly.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import com.eroly.common.GlobalSt;
+import com.eroly.util.RedisCache;
+import com.eroly.util.cacheUpdate.ICacheUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +16,11 @@ import org.springframework.stereotype.Service;
 
 import com.eroly.mapper.InfoMapper;
 
-@Service("InfoService")
-public class InfoService {
-private static Logger logger = LoggerFactory.getLogger(InfoService.class);
-	
+@Service
+public class InfoService implements ICacheUpdate {
+	private static Logger logger = LoggerFactory.getLogger(InfoService.class);
+	@Autowired(required=true)
+	private RedisCache redisCache;
 	@Autowired(required=true)
 	@Qualifier("InfoMapper")
 	private InfoMapper infoMapper;
@@ -35,8 +40,8 @@ private static Logger logger = LoggerFactory.getLogger(InfoService.class);
 	 * 按信息类型分类查询信息
 	 * @return
 	 */
-	public Map<String, Object> selectAllInfo(){
-		Map<String, Object> resultMap = new HashMap<String, Object>();
+	public Map<String, List<Map<String, Object>>> selectAllInfo(){
+		Map<String, List<Map<String, Object>>> resultMap = new HashMap<String, List<Map<String, Object>>>();
 		List<String> infoTypeList = infoMapper.selectInfoType();//信息表中所有涉及的信息类型
 		logger.info("-------按信息类型查找公共信息开始----"+infoTypeList);
 		if(infoTypeList!=null && infoTypeList.size()>0) {
@@ -48,4 +53,14 @@ private static Logger logger = LoggerFactory.getLogger(InfoService.class);
 		return resultMap;
 	}
 
+	public void update() {
+		//缓存首页信息
+		logger.info("InfoService selectAllInfo 刷新缓存");
+		Map<String, List<Map<String, Object>>> resultMap = this.selectAllInfo();
+		Set<String> keySet = resultMap.keySet();
+		for(String key:keySet){
+			List<Map<String, Object>> value = resultMap.get(key);
+			redisCache.putObject(GlobalSt.PUBLIC_INFO_ALL+key, value);
+		}
+	}
 }

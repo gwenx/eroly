@@ -23,7 +23,6 @@ import com.eroly.util.RedisCache;
 public class TeacherController {
 	private static Logger logger = LoggerFactory.getLogger(TeacherController.class);
 	@Autowired
-	@Qualifier("TeacherService")
 	private TeacherService teacherService;
 	@Autowired(required=true)
 	private RedisCache redisCache;

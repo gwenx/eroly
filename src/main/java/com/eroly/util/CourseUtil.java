@@ -19,7 +19,6 @@ public class CourseUtil {
 	@Autowired(required=true)
 	private RedisCache redisCache;
 	@Autowired
-	@Qualifier("CourseService")
 	private CourseService courseService;
 	/**
 	 * <p>按ID查询课程信息</p>

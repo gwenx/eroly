@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.eroly.common.GlobalSt;
+import com.eroly.util.RedisCache;
+import com.eroly.util.cacheUpdate.ICacheUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +14,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.eroly.mapper.TeacherMapper;
-@Service("TeacherService")
-public class TeacherService {
+@Service
+public class TeacherService implements ICacheUpdate {
 	private static Logger logger = LoggerFactory.getLogger(TeacherService.class);
+	@Autowired(required=true)
+	private RedisCache redisCache;
 	@Autowired(required=true)
 	@Qualifier("TeacherMapper")
 	private TeacherMapper teacherMapper;
@@ -23,5 +28,11 @@ public class TeacherService {
 		teacherList=teacherMapper.findAll();
 		logger.info("-----TeacherService findAll end----");
 		return teacherList;
+	}
+
+	public void update() {
+		logger.info("TeacherService findAll 刷新缓存");
+		//缓存教授信息
+		redisCache.putObject(GlobalSt.PUBLIC_INFO_ALL, this.findAll());
 	}
 }

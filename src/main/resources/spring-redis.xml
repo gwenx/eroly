@@ -15,39 +15,7 @@
 		<property name="testOnBorrow" value="true" />
 	</bean>
 	<!-- 单redis和哨兵模式只能存在其一 -->
-	<!-- 一、哨兵模式配置开始 -->
-	<!-- 新加入的哨兵模式的配置 -->
-	<!-- <bean id="sentinelConfiguration"
-		class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
-		<property name="master">
-			<bean class="org.springframework.data.redis.connection.RedisNode">
-				<property name="name" value="mymaster"></property>
-			</bean>
-		</property>
-		<property name="sentinels">
-			<set>
-				<bean class="org.springframework.data.redis.connection.RedisNode">
-					<constructor-arg name="host" value="${sentinel1.ip}"></constructor-arg>
-					<constructor-arg name="port" value="${sentinel1.port}"></constructor-arg>
-				</bean>
-				<bean class="org.springframework.data.redis.connection.RedisNode">
-					<constructor-arg name="host" value="${sentinel2.ip}"></constructor-arg>
-					<constructor-arg name="port" value="${sentinel2.port}"></constructor-arg>
-				</bean>
-				<bean class="org.springframework.data.redis.connection.RedisNode">
-					<constructor-arg name="host" value="${sentinel3.ip}"></constructor-arg>
-					<constructor-arg name="port" value="${sentinel3.port}"></constructor-arg>
-				</bean>
-			</set>
-		</property>
-	</bean> -->
-	<!-- 带哨兵模式的配置，不加redis的ip和端口 -->
-	<!-- <bean id="JedisConnectionFactory"
-		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-		p:password="" p:pool-config-ref="poolConfig">
-		<constructor-arg name="sentinelConfig" ref="sentinelConfiguration"></constructor-arg>
-		</bean> -->
-	<!-- 哨兵模式结束 -->
+
 	<!-- 原始的，单redis配置 开始 -->
 	<bean id="JedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
 		p:host-name="127.0.0.1" p:port="6379" p:password="" p:pool-config-ref="poolConfig"/>
@@ -74,5 +42,17 @@
 	<!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，另外，该注解一定要声明在spring主配置文件中才会生效 -->
 	
 	<cache:annotation-driven cache-manager="cacheManager" />
+
+
+
+
+
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg index="0">
+			<ref bean="poolConfig"/>
+		</constructor-arg>
+		<constructor-arg index="1" value="127.0.0.1" type="java.lang.String"/>
+		<constructor-arg index="2" value="6379" type="int"/>
+	</bean>
 
 </beans>  
