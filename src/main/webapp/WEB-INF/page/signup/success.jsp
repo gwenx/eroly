@@ -48,7 +48,7 @@ margin-top:40px;font-size:16px;
   </head>
   
   <body>
-<c:import url="../header.jsp"></c:import>
+<c:import url="../header.jsp" charEncoding="UTF-8"></c:import>
   <!--  <iframe style="width:100%;height:236px" scrolling="no" frameborder="0" src="student/header.jsp"></iframe>-->
 
 <div class="content">
@@ -77,7 +77,7 @@ java开发全套精编教程》课程，</p>
    </div>
    <div class="clear"></div><!--清除浮动-->
 </div><!--content end-->
-	<c:import url="../foot.jsp"></c:import>
+	<c:import url="../foot.jsp" charEncoding="UTF-8"></c:import>
 		<script type="text/javascript" src="resources/js/banner1.js"></script>
 </body>
 </html>

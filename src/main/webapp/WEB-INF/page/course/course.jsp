@@ -39,7 +39,7 @@ body,div,dl,dd,dt,p,a,form,select,input,span,ul,ol,li{
 </style>
 </head>
 <body>
-	<c:import url="../header.jsp"></c:import>
+	<c:import url="../header.jsp" charEncoding="UTF-8"></c:import>
 	<div class="content">
 		<div class="clear"></div>
 		<div class="buyDiv">
@@ -153,7 +153,7 @@ body,div,dl,dd,dt,p,a,form,select,input,span,ul,ol,li{
 		<div class="clear"></div>
 		<!--清除浮动-->
 	</div>
-	<c:import url="../foot.jsp"></c:import>
+	<c:import url="../foot.jsp" charEncoding="UTF-8"></c:import>
 	<script type="text/javascript" src="resources/js/banner1.js"></script>
 	<script type="text/javascript">
 		function back(){

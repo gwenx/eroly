@@ -25,7 +25,7 @@
 
 </head>
 <body>
-	<c:import url="../header.jsp"></c:import>
+	<c:import url="../header.jsp" charEncoding="UTF-8"></c:import>
 	<div class="content">
 		<div class="clear"></div>
 		<div class="infoDiv">
@@ -77,7 +77,7 @@
 		<!--清除浮动-->
 	</div>
 	<!--content end-->
-	<c:import url="../foot.jsp"></c:import>
+	<c:import url="../foot.jsp" charEncoding="UTF-8"></c:import>
 	<script type="text/javascript" src="resources/js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="resources/js/teacher/teacher.js"></script>
 <script type="text/javascript" src="resources/js/banner1.js"></script>

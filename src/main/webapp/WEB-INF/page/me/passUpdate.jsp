@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-<c:import url="../header.jsp"></c:import>
+<c:import url="../header.jsp" charEncoding="UTF-8"></c:import>
 
 <div class="content">
    
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="clear"></div><!--清除浮动-->
 </div><!--content end-->
-<c:import url="../foot.jsp"></c:import>
+<c:import url="../foot.jsp" charEncoding="UTF-8"></c:import>
 	<script type="text/javascript" src="resources/js/banner1.js"></script>
 </body>
 </html>

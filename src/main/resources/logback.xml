@@ -11,6 +11,9 @@
 	<contextName>eroly</contextName>
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!--<filter class="com.eroly.filter.ConsoleLogFilter">
+			<consoleLogEnable>true</consoleLogEnable>
+		</filter>-->
 		<encoder>
 			<pattern>
 				%d{yyyyMMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
@@ -47,6 +50,7 @@
 
 	<!-- 至多只能配置一个root -->
 	<root level="debug">
+		<!--在生产上注释掉下面这一行-->
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</root>

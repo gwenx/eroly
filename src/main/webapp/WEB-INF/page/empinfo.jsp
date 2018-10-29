@@ -32,7 +32,7 @@ font-family:'Microsoft YaHei',Verdana, Arial, Helvetica, sans-serif;color:#36363
   </head>
   
   <body>
-<c:import url="header.jsp"></c:import>
+<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
   <!--  <iframe style="width:100%;height:236px" scrolling="no" frameborder="0" src="student/header.jsp"></iframe>-->
 <div class="content">
    
@@ -78,7 +78,7 @@ font-family:'Microsoft YaHei',Verdana, Arial, Helvetica, sans-serif;color:#36363
    </div>
    <div class="clear"></div><!--清除浮动-->
 </div><!--content end-->
-<c:import url="foot.jsp"></c:import>
+<c:import url="foot.jsp" charEncoding="UTF-8"></c:import>
 <script type="text/javascript" src="resources/js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="resources/js/empinfo.js"></script>
 <script type="text/javascript" src="resources/js/banner1.js"></script>

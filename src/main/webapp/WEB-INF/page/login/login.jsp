@@ -23,7 +23,7 @@
 <link href="resources/css/login.css" type="text/css" rel="stylesheet" />
 
 <body>
-	<c:import url="../header.jsp"></c:import>
+	<c:import url="../header.jsp" charEncoding="UTF-8"></c:import>
 	<div class="content">
 		<div class="clear"></div>
 		<div class="loginDiv">
@@ -84,7 +84,7 @@
 	</div>
 	<!--content end-->
 
-	<c:import url="../foot.jsp"></c:import>
+	<c:import url="../foot.jsp" charEncoding="UTF-8"></c:import>
 	<!--footer end-->
 	
 <script type="text/javascript" src="resources/js/banner1.js"></script>
