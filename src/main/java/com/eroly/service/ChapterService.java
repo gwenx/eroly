@@ -17,10 +17,10 @@ import com.eroly.mapper.NodeMapper;
 public class ChapterService {
 	private static Logger logger = LoggerFactory.getLogger(ChapterService.class);
 
-	@Autowired(required=true)
+	@Autowired
 	@Qualifier("ChapterMapper")
 	private ChapterMapper chapterMapper;
-	@Autowired(required=true)
+	@Autowired
 	@Qualifier("NodeMapper")
 	private NodeMapper nodeMapper;
 	/**

@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.eroly.common.GlobalSt;
-import com.eroly.util.RedisCache;
 import com.eroly.util.cacheUpdate.ICacheUpdate;
+import com.eroly.util.cacheUpdate.RedisCache;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,10 @@ import com.eroly.mapper.CourseMapper;
 public class CourseService implements ICacheUpdate {
 	private static Logger logger = LoggerFactory.getLogger(CourseService.class);
 
-	@Autowired(required=true)
+	@Autowired
 	private RedisCache redisCache;
 
-	@Autowired(required=true)
+	@Autowired
 	@Qualifier("CourseMapper")
 	private CourseMapper courseMapper;
 

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.eroly.common.GlobalSt;
 import com.eroly.exception.ErolyException;
 import com.eroly.service.CourseService;
+import com.eroly.util.cacheUpdate.RedisCache;
 @Repository("CourseUtil")
 public class CourseUtil {
 	private static Logger logger = LoggerFactory.getLogger(CourseUtil.class);

@@ -22,8 +22,8 @@ import com.eroly.exception.ErolyException;
 import com.eroly.service.ChapterService;
 import com.eroly.service.CourseService;
 import com.eroly.util.CourseUtil;
-import com.eroly.util.RedisCache;
 import com.eroly.util.ValiddateUtil;
+import com.eroly.util.cacheUpdate.RedisCache;
 
 @Controller("CourseController")
 @RequestMapping("/course")
@@ -35,9 +35,9 @@ public class CourseController {
 	@Autowired
 	@Qualifier("ChapterService")
 	private ChapterService chapterService;
-	@Autowired(required=true)
+	@Autowired
 	private RedisCache redisCache;
-	@Autowired(required=true)
+	@Autowired
 	private CourseUtil courseUtil;
 	
 	/**

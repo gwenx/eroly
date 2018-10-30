@@ -14,7 +14,7 @@ import com.eroly.mapper.StudentMapper;
 @Service("StudentServise")
 public class StudentServise {
 	private static Logger logger = LoggerFactory.getLogger(StudentServise.class);
-	@Autowired(required=true)
+	@Autowired
 	@Qualifier("StudentMapper")
 	private StudentMapper studentMapper;
 	/**

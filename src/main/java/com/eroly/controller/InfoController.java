@@ -1,6 +1,5 @@
 package com.eroly.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +7,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,16 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eroly.common.GlobalSt;
 import com.eroly.exception.ErolyException;
 import com.eroly.service.InfoService;
-import com.eroly.util.RedisCache;
 import com.eroly.util.StringUtil;
+import com.eroly.util.cacheUpdate.RedisCache;
 
 @Controller("InfoController")
 @RequestMapping("/info")
 public class InfoController {
 	private static Logger logger = LoggerFactory.getLogger(InfoController.class);
-	@Autowired(required=true)
+	@Autowired
 	private InfoService infoService;
-	@Autowired(required=true)
+	@Autowired
 	private RedisCache redisCache;
 	/**
 	 * 按信息类型查找公共信息

@@ -14,12 +14,12 @@ import com.eroly.mapper.UserMapper;
 @Service("UserService")
 public class UserService {
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
-	@Autowired(required=true)
+	@Autowired
 	@Qualifier("UserMapper")
 	private UserMapper userMapper;
 	/**
 	 * 根据用户输入信息查找用户信息
-	 * @param userId
+	 * @param userInfo
 	 * @return
 	 */
 	public Map<String , Object> findByUserInfo(String userInfo){

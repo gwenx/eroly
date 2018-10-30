@@ -25,117 +25,23 @@ public class StringUtil {
 	private static final Logger logger = LoggerFactory.getLogger(StringUtil.class);
 	
 	private final static char hex_asc_tab[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-
-	/*序号	货币代码	货币描述	货币符号	简化标识
-		1、    	36	澳大利亚元	AUD	U
-		2、   	124	加拿大元		CAD	A
-		3、	    156	人民币		CNY	C
-		4、	    344	港元			HKD	K
-		5、	    392	日元			JPY	P
-		6、	    826	英镑			GBP	B
-		7、	    840	美元			USD	S
-		8、	    978	欧元			EUR	E
-
-		默认没有传的时候是人民币156
-
-	 *  字母型币种转数字
-	 */
-	public static String strGetNumCoinType(String strCoinType) {
-		String coinType = "";
-		if("AUD".equals(strCoinType)){
-			coinType = "36";
-		}else if("AUD".equals(strCoinType)){
-			coinType = "124";
-		}else if("HKD".equals(strCoinType)){
-			coinType = "344";
-		}else if("JPY".equals(strCoinType)){
-			coinType = "392";
-		}else if("GBP".equals(strCoinType)){
-			coinType = "826";
-		}else if("USD".equals(strCoinType)){
-			coinType = "840";
-		}else if("EUR".equals(strCoinType)){
-			coinType = "978";
-		}else{
-			coinType = "156";
-		}
-		return coinType;
-	}
-	//三位币种转两位币种
-	public static String coinType3to2(String coinType3) {
-		String coinType2 = "01";
-		if("156".equals(coinType3)){//人民币
-			coinType2 = "01";
-		}else if("826".equals(coinType3)){//英镑
-			coinType2 = "12";
-		}else if("344".equals(coinType3)){//港币
-			coinType2 = "13";
-		}else if("840".equals(coinType3)){//美元
-			coinType2 = "14";
-		}else if("036".equals(coinType3)){//澳元
-			coinType2 = "29";
-		}else if("124".equals(coinType3)){//加拿大
-			coinType2 = "28";
-		}else if("392".equals(coinType3)){//日元
-			coinType2 = "27";
-		}else if("978".equals(coinType3)){//欧元
-			coinType2 = "38";
-		}else if("756".equals(coinType3)){//瑞士法郎
-			coinType2 = "15";
-		}else if("702".equals(coinType3)){//新加坡
-			coinType2 = "18";
-		}else if("752".equals(coinType3)){//瑞典克朗
-			coinType2 = "21";
-		}else if("578".equals(coinType3)){//挪威克朗
-			coinType2 = "23";
-		}else if("246".equals(coinType3)){//芬兰马克
-			coinType2 = "42";
-		} else if("208".equals(coinType3)){//丹麦克朗
-			coinType2 = "22";
-		}
-		return coinType2;
-	}
 	
-	
-	//三位币种转两位币种
-	public static String coinType2to3(String coinType2) {
-		if(StringUtil.isNotEmpty(coinType2) && coinType2.length()==3) {
-			return coinType2; 
-		}
-		String coinType3 = "156";
-		if("01".equals(coinType2)){//人民币
-			coinType3 = "156";
-		}else if("12".equals(coinType2)){//英镑
-			coinType3 = "826";
-		}else if("13".equals(coinType2)){//港币
-			coinType3 = "344";
-		}else if("14".equals(coinType2)){//美元
-			coinType3 = "840";
-		}else if("29".equals(coinType2)){//澳元
-			coinType3 = "036";
-		}else if("28".equals(coinType2)){//加拿大
-			coinType3 = "124";
-		}else if("27".equals(coinType2)){//日元
-			coinType3 = "392";
-		}else if("38".equals(coinType2)){//欧元
-			coinType3 = "978";
-		}else if("15".equals(coinType2)){//瑞士法郎
-			coinType3 = "756";
-		}else if("18".equals(coinType2)){//新加坡
-			coinType3 = "702";
-		}else if("21".equals(coinType2)){//瑞典克朗
-			coinType3 = "752";
-		}else if("23".equals(coinType2)){//挪威克朗
-			coinType3 = "578";
-		}else if("42".equals(coinType2)){//芬兰马克
-			coinType3 = "246";
-		} else if("22".equals(coinType2)){//丹麦克朗
-			coinType3 = "208";
-		}
-		return coinType3;
+	public static String getNum62(long num){
+		StringBuffer buffer = new StringBuffer();
+		do {
+			long yu = num%62;
+			num = num/62;
+			if(yu>=0&&yu<10){
+				buffer.append(yu);
+			}else if(yu>=10&&yu<=35){//10-35 +87后 97-122即a-z
+				buffer.append((char)(yu+87));
+			}else{//36-61 +29后 65-90即A-Z
+				buffer.append((char)(yu+29));
+			}
+		} while (num>0);
+		return buffer.toString();
 	}
-	
-	/*
+	/**
 	 *  字符串类型转换
 	 */
 	public static String iso2utf8(String src) {
@@ -311,8 +217,8 @@ public class StringUtil {
 	 * 以指定字符串填补空位，左对齐字符串 * lpadString("X",3,"0"); ==>"00X"
 	 * 
 	 * @param src
-	 * @param byteLength
-	 * @param temp
+	 * @param length
+	 * @param single
 	 * @return
 	 */
 	public static String lpadString(String src, int length, String single) {
@@ -338,7 +244,7 @@ public class StringUtil {
 	 * 以指定字符串填补空位，右对齐字符串 rpadString("9",3,"0")==>"900"
 	 * 
 	 * @param src
-	 * @param byteLength
+	 * @param length
 	 * @param single
 	 * @return
 	 */
@@ -642,7 +548,7 @@ public class StringUtil {
 	/**
 	 * replaceJsonPwd 屏蔽密码输出
 	 * 
-	 * @param sendData
+	 * @param log
 	 * @return String
 	 * @exception
 	 * @since 1.0.0

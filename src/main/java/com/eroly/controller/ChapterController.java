@@ -21,7 +21,6 @@ public class ChapterController {
 	@Autowired
 	@Qualifier("ChapterService")
 	private ChapterService chapterService;
-	
 	@RequestMapping("findChapter")
 	@ResponseBody
 	public String findChapter(String courseId,Model model) {

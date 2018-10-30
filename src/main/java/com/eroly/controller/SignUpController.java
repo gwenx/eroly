@@ -27,7 +27,7 @@ import com.eroly.util.ValiddateUtil;
 @RequestMapping("/signUp")
 public class SignUpController {
 	private static Logger logger = LoggerFactory.getLogger(SignUpController.class);
-	@Autowired(required=true)
+	@Autowired
 	private CourseUtil courseUtil;
 	@Autowired
 	OperaServletUtil OperaServlet;

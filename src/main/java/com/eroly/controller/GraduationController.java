@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eroly.common.GlobalSt;
 import com.eroly.exception.ErolyException;
 import com.eroly.service.GraduationService;
-import com.eroly.util.RedisCache;
 import com.eroly.util.ValiddateUtil;
+import com.eroly.util.cacheUpdate.RedisCache;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -27,7 +27,7 @@ public class GraduationController {
 	@Autowired
 	@Qualifier("GraduationService")
 	private GraduationService graduationService;
-	@Autowired(required=true)
+	@Autowired
 	private RedisCache redisCache;
 	/**
 	 * 首页优秀学员模块，查询前六个学员信息

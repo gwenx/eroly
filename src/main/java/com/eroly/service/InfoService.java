@@ -6,8 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 import com.eroly.common.GlobalSt;
-import com.eroly.util.RedisCache;
 import com.eroly.util.cacheUpdate.ICacheUpdate;
+import com.eroly.util.cacheUpdate.RedisCache;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

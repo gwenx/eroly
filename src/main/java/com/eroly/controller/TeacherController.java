@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eroly.common.GlobalSt;
 import com.eroly.exception.ErolyException;
 import com.eroly.service.TeacherService;
-import com.eroly.util.RedisCache;
+import com.eroly.util.cacheUpdate.RedisCache;
 
 @Controller("TeacherController")
 @RequestMapping("/teacher")
@@ -24,7 +24,7 @@ public class TeacherController {
 	private static Logger logger = LoggerFactory.getLogger(TeacherController.class);
 	@Autowired
 	private TeacherService teacherService;
-	@Autowired(required=true)
+	@Autowired
 	private RedisCache redisCache;
 	
 	@RequestMapping("findAll")

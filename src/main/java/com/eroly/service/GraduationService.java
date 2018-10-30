@@ -15,7 +15,7 @@ import com.github.pagehelper.PageHelper;
 @Service("GraduationService")
 public class GraduationService {
 	private static Logger logger = LoggerFactory.getLogger(GraduationService.class);
-	@Autowired(required=true)
+	@Autowired
 	@Qualifier("GraduationMapper")
 	private GraduationMapper graduationMapper;
 	/**

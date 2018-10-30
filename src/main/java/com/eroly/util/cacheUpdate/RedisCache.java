@@ -1,4 +1,4 @@
-package com.eroly.util;
+package com.eroly.util.cacheUpdate;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -19,6 +19,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import com.eroly.util.StringUtil;
+
 @Component
 public class RedisCache implements Cache {
 	private static Logger logger = LoggerFactory.getLogger(RedisCache.class);
@@ -30,13 +32,32 @@ public class RedisCache implements Cache {
 	 * @param key 键
 	 * @return
 	 */
-	public Object getRedisValue(String key) {
-		ValueWrapper valueWrapper = get(key);
-		if(valueWrapper!=null) {
-			return valueWrapper.get();
-		}else {
-			return null;
-		}
+	public Object getRedisValue(Object key) {
+		final String keyf = (String) key;
+		return get(keyf);
+//		ValueWrapper valueWrapper = get(key);
+//		if(valueWrapper!=null) {
+//			return valueWrapper.get();
+//		}else {
+//			return null;
+//		}
+	}
+	public Object get(final String keyf) {
+		logger.info("--------RedisCache.get start----");
+		logger.info("--------Redis key:{}----",keyf);
+		Object object = null;
+		object = redisTemplate.execute(new RedisCallback<Object>() {
+			public Object doInRedis(RedisConnection connection) throws DataAccessException {
+				byte[] key = keyf.getBytes();
+				byte[] value = connection.get(key);
+				if (value == null) {
+					return null;
+				}
+				return toObject(value);
+			}
+		});
+		logger.info("--------RedisCache.get end----");
+		return object;
 	}
 	public ValueWrapper get(Object key) {
 		logger.info("--------RedisCache.get start----");
@@ -88,7 +109,11 @@ public class RedisCache implements Cache {
 		});
 		logger.info("--------RedisCache.put end----");
 	}
-
+	/**
+	 * 对象转换为二进制数组
+	 * @param obj
+	 * @return
+	 */
 	private byte[] toByteArray(Object obj) {
 		byte[] bytes = null;
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -104,7 +129,11 @@ public class RedisCache implements Cache {
 		}
 		return bytes;
 	}
-
+	/**
+	 * 二进制数组转化为object对象
+	 * @param bytes
+	 * @return
+	 */
 	private Object toObject(byte[] bytes) {
 		Object obj = null;
 		try {
