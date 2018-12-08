@@ -13,7 +13,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = arg0.getSession();
 		String user = (String) session.getAttribute(GlobalSt.LOGIN_FLAG);
 		//判断是否登录
-		if("1".equals(user)) {
+		if(GlobalSt.LOGIN_YES.equals(user)) {
 			return true;
 		} else {
 			arg1.sendRedirect("/eroly/public/gotoLogin");
