@@ -12,6 +12,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
 		HttpSession session = arg0.getSession();
 		String user = (String) session.getAttribute(GlobalSt.LOGIN_FLAG);
+		//判断是否登录
 		if("1".equals(user)) {
 			return true;
 		} else {
