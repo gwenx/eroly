@@ -12,7 +12,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
 		HttpSession session = arg0.getSession();
 		String user = (String) session.getAttribute(GlobalSt.LOGIN_FLAG);
-		if("1".equals(user)) {
+		if(GlobalSt.LOGIN_YES.equals(user)) {
 			return true;
 		} else {
 			arg1.sendRedirect("/eroly/public/gotoLogin");
